@@ -37,12 +37,19 @@ body {
   align-items: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  animation: slideDown 0.5s ease-out;
 }
 
 .logo {
   font-size: 1.3rem;
   font-weight: bold;
   color: var(--primary-color);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
 
 .nav-links {
@@ -57,10 +64,22 @@ body {
   font-weight: 500;
   transition: var(--transition);
   font-size: 0.95rem;
+  position: relative;
 }
 
-.nav-links a:hover {
-  color: var(--primary-color);
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .hamburger {
@@ -110,6 +129,7 @@ body {
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  animation: fadeInUp 1s ease-out;
 }
 
 .highlight {
@@ -120,6 +140,8 @@ body {
   font-size: 1.5rem;
   color: var(--light-text);
   margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out 0.3s forwards;
+  opacity: 0;
 }
 
 /* Buttons */
@@ -165,6 +187,31 @@ section h2 {
   font-size: 2.5rem;
   margin-bottom: 3rem;
   color: var(--text-color);
+  position: relative;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+section h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--primary-color);
+  animation: lineGrow 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes lineGrow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
 }
 
 /* About Section */
@@ -199,6 +246,8 @@ section h2 {
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
 .skill-card:hover {
@@ -206,10 +255,35 @@ section h2 {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.skill-card:hover::before {
+  left: 100%;
+}
+
 .skill-card i {
   font-size: 2.5rem;
   color: var(--primary-color);
   margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover i {
+  transform: scale(1.2) rotate(5deg);
 }
 
 .skill-card h3 {
@@ -355,10 +429,162 @@ footer {
   }
 }
 
-.hero-content,
-.about-content,
-.skill-card {
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply animations to sections */
+.hero-content {
   animation: fadeIn 1s ease-out;
+}
+
+.profile-image {
+  animation: scaleIn 1s ease-out;
+}
+
+.about-content {
+  animation: slideInLeft 1s ease-out;
+}
+
+.skills-grid {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.skill-card {
+  opacity: 0;
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.skill-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.skill-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.skill-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.skill-card:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.skill-card:nth-child(5) {
+  animation-delay: 1s;
+}
+.skill-card:nth-child(6) {
+  animation-delay: 1.2s;
+}
+
+.projects-grid {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.project-card {
+  opacity: 0;
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+.project-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.project-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.project-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.project-card:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.contact-content {
+  animation: slideInLeft 1s ease-out;
+}
+
+/* Add animation to section headings */
+section h2 {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Add hover animations */
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Add animation to social links */
+.social-links a {
+  transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+}
+
+/* Add animation to form inputs */
+input,
+textarea {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add scroll-triggered animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Add these new styles after the existing styles */
@@ -371,12 +597,24 @@ footer {
 .contact-info p {
   margin: 0.5rem 0;
   color: var(--light-text);
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
 }
 
 .contact-info i {
   color: var(--primary-color);
   margin-right: 0.5rem;
   width: 20px;
+}
+
+.contact-info p:nth-child(1) {
+  animation-delay: 0.4s;
+}
+.contact-info p:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.contact-info p:nth-child(3) {
+  animation-delay: 0.8s;
 }
 
 .education {
@@ -429,4 +667,66 @@ footer {
 .project-card p {
   color: var(--light-text);
   line-height: 1.6;
+}
+
+/* Navbar Animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Section Title Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Content Animations */
+.skill-card::before,
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.skill-card:hover::before,
+.project-card:hover::before {
+  left: 100%;
+}
+
+.skill-card:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.project-card:hover h3 {
+  transform: translateX(10px);
+  color: var(--primary-color);
+}
+
+/* Button Animation */
+.cta-buttons {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 0.9s forwards;
 }

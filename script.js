@@ -121,3 +121,26 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
+// Add reveal class to elements
+document.querySelectorAll("section").forEach((section) => {
+  section.classList.add("reveal");
+});
+
+// Scroll animation
+function reveal() {
+  const reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach((element) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = element.getBoundingClientRect().top;
+    const elementVisible = 150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      element.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", reveal);
+window.addEventListener("load", reveal);
