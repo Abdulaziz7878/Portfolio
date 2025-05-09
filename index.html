@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abdulaziz Degefa - Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">Abdulaziz</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="profile-image">
+          <img
+            src="https://placehold.co/400x400/2563eb/ffffff?text=AD"
+            alt="Abdulaziz Degefa"
+          />
+        </div>
+        <h1>Hi, I'm <span class="highlight">Abdulaziz Degefa</span></h1>
+        <p class="subtitle">Full-Stack Developer & Machine Learning Engineer</p>
+        <div class="contact-info">
+          <p><i class="fas fa-envelope"></i> abdulazizdegefa78@gmail.com</p>
+          <p><i class="fas fa-phone"></i> +251 907 091 527</p>
+          <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+        </div>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn primary">Contact Me</a>
+          <a href="#projects" class="btn secondary">View My Work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I am a Computer Science student with a strong background in
+            full-stack development, data analysis, and machine learning.
+            Currently pursuing my BSc in Computer Science at St. Mary's
+            University, I combine academic knowledge with practical experience
+            in building robust applications.
+          </p>
+          <p>
+            As a Technical Lead at St. Mary's University CS Club, I lead
+            technical workshops and mentor junior members, sharing my passion
+            for web development and programming.
+          </p>
+          <div class="education">
+            <h3>Education</h3>
+            <ul>
+              <li>
+                BSc in Computer Science - St. Mary's University (2022-2026)
+              </li>
+              <li>
+                Certificate in Data Analysis and Machine Learning - 10 Academy
+                (2024)
+              </li>
+              <li>Virtual Assistant Certificate - ALX (2024)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <h2>My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fab fa-js"></i>
+          <h3>Languages</h3>
+          <p>JavaScript (ES6+), Python, SQL</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-code"></i>
+          <h3>Web Development</h3>
+          <p>React, Node.js, Express.js, Redux, REST APIs</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-database"></i>
+          <h3>Databases</h3>
+          <p>PostgreSQL, MongoDB</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-brain"></i>
+          <h3>Machine Learning</h3>
+          <p>Scikit-learn, TensorFlow, PyTorch, Keras</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-chart-bar"></i>
+          <h3>Data Analysis</h3>
+          <p>Pandas, NumPy, Matplotlib, Seaborn</p>
+        </div>
+        <div class="skill-card">
+          <i class="fas fa-tools"></i>
+          <h3>Tools</h3>
+          <p>Git, Postman, VS Code, Android Studio</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <h2>My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Credit Scoring Model</h3>
+          <p>
+            Developed a machine learning model for Bati Bank to assess client
+            creditworthiness and improve loan decision-making processes.
+          </p>
+        </div>
+        <div class="project-card">
+          <h3>Fraud Detection System</h3>
+          <p>
+            Built ML models to detect fraudulent financial transactions by
+            identifying suspicious patterns in large datasets.
+          </p>
+        </div>
+        <div class="project-card">
+          <h3>News Sentiment Analysis</h3>
+          <p>
+            Implemented NLP to analyze financial news and gauge its impact on
+            stock market behavior for better investment strategies.
+          </p>
+        </div>
+        <div class="project-card">
+          <h3>Face Detector Web App</h3>
+          <p>
+            Developed a web application using React, Node.js/Express, and
+            PostgreSQL that detects faces in images using Clarifai API.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Get In Touch</h2>
+      <div class="contact-content">
+        <form id="contact-form">
+          <div class="form-group">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your Name"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Your Email"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              id="message"
+              name="message"
+              required
+              placeholder="Your Message"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="social-links">
+        <a href="https://github.com/Abdulaziz7878" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/abdulaziz-degefa-3a0453265"
+          target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+      </div>
+      <p>&copy; 2024 Abdulaziz Degefa. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
