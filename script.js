@@ -1,17 +1,32 @@
 // Mobile Menu Toggle
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
+const menuOverlay = document.querySelector(".menu-overlay");
+const body = document.body;
 
-hamburger.addEventListener("click", () => {
+function toggleMenu() {
   hamburger.classList.toggle("active");
   navLinks.classList.toggle("active");
+  menuOverlay.classList.toggle("active");
+  body.style.overflow = navLinks.classList.contains("active") ? "hidden" : "";
+}
+
+hamburger.addEventListener("click", toggleMenu);
+menuOverlay.addEventListener("click", toggleMenu);
+
+// Close menu when clicking a link
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (navLinks.classList.contains("active")) {
+      toggleMenu();
+    }
+  });
 });
 
-// Close mobile menu when clicking outside
-document.addEventListener("click", (e) => {
-  if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-    hamburger.classList.remove("active");
-    navLinks.classList.remove("active");
+// Close menu on window resize if open
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768 && navLinks.classList.contains("active")) {
+    toggleMenu();
   }
 });
 
@@ -35,24 +50,26 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 // Form Submission
 const contactForm = document.getElementById("contact-form");
 
-contactForm.addEventListener("submit", function (e) {
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Get form data
-  const formData = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    message: document.getElementById("message").value,
-  };
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
 
-  // Here you would typically send the form data to a server
-  console.log("Form submitted:", formData);
+  // Create mailto link
+  const mailtoLink = `mailto:abdulazizdegefa78@gmail.com?subject=Portfolio Contact from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+
+  // Open default email client
+  window.location.href = mailtoLink;
+
+  // Clear form
+  contactForm.reset();
 
   // Show success message
-  alert("Thank you for your message! I will get back to you soon.");
-
-  // Reset form
-  contactForm.reset();
+  alert(
+    "Thank you for your message! Your email client will open to send the message."
+  );
 });
 
 // Scroll to Top Button
@@ -144,3 +161,38 @@ function reveal() {
 
 window.addEventListener("scroll", reveal);
 window.addEventListener("load", reveal);
+
+// Theme Toggle
+const themeToggles = document.querySelectorAll(".theme-toggle");
+
+// Function to set theme
+function setTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  themeToggles.forEach((toggle) => {
+    const icon = toggle.querySelector("i");
+    icon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+  });
+  localStorage.setItem("theme", theme);
+}
+
+// Set initial theme to dark
+setTheme("dark");
+
+// Theme toggle click handler
+themeToggles.forEach((toggle) => {
+  toggle.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+  });
+});
+
+// Check for saved theme preference on page load
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else {
+    setTheme("dark");
+  }
+});

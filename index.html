@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,6 +11,11 @@
     />
   </head>
   <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" aria-label="Toggle theme">
+      <i class="fas fa-sun"></i>
+    </button>
+
     <!-- Navigation -->
     <nav class="navbar">
       <div class="logo">Abdulaziz</div>
@@ -20,6 +25,11 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+          </button>
+        </li>
       </ul>
       <div class="hamburger">
         <span></span>
@@ -27,6 +37,7 @@
         <span></span>
       </div>
     </nav>
+    <div class="menu-overlay"></div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -37,8 +48,16 @@
             alt="Abdulaziz Degefa"
           />
         </div>
-        <h1>Hi, I'm <span class="highlight">Abdulaziz Degefa</span></h1>
-        <p class="subtitle">Full-Stack Developer & Machine Learning Engineer</p>
+        <h1>
+          <span class="highlight"
+            ><span class="greeting">Hi, I'm</span>
+            <span class="name">Abdulaziz Degefa</span></span
+          >
+        </h1>
+        <p class="subtitle">
+          <span>Full-Stack Developer</span>
+          <span>Machine Learning Engineer</span>
+        </p>
         <div class="contact-info">
           <p><i class="fas fa-envelope"></i> abdulazizdegefa78@gmail.com</p>
           <p><i class="fas fa-phone"></i> +251 907 091 527</p>
