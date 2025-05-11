@@ -1358,3 +1358,9 @@ section h2::after {
 .theme-toggle i {
   color: var(--text-color);
 }
+@media (max-width: 480px) {
+  .hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: .7rem;
+  }
+}
